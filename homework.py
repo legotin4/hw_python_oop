@@ -5,8 +5,6 @@ class Calculator:
 	def __init__(self, limit):
 		"""Дневной лимит трат/калорий, который задал пользователь."""
 		self.limit = limit
-		#self.records = records
-
 
 class Record:
 	nowdate = dt.datetime.now().date()
@@ -26,16 +24,13 @@ class Record:
 
 		"""Комментарий на что потрачено или откуда взялись калории."""
 		self.comment = comment
-
-		#if self.date == None:
-		#	print('none')
-
+		
 class CaloriesCalculator(Calculator):
 	records = []
 
 	"""Определяет, сколько ещй калорий можно/нужно получить сегодня."""
 	def get_calories_remained(self):
-		#if limit >= 2500:
+		
 		limit = self.limit
 		today_stats = CaloriesCalculator.get_today_stats()
 		
@@ -57,7 +52,7 @@ class CaloriesCalculator(Calculator):
 		now = dt.datetime.now()
 		stats_today = 0
 		for i in cash_calculator.records:
-			#print(i.date, 'i',dt.datetime.strptime(i.date, '%d.%m.%Y').date())
+			
 			if now.date() == dt.datetime.strptime(i.date, '%d.%m.%Y').date():
 				stats_today = stats_today + i.amount 
 
@@ -72,7 +67,7 @@ class CaloriesCalculator(Calculator):
 		minusseven = now - seven_days
 		
 		for i in cash_calculator.records:
-			#из строки в i.date в объект datetime чтобы сравнить
+			
 			if minusseven < dt.datetime.strptime(i.date, '%d.%m.%Y'):
 				stats = stats + i.amount 
 		
@@ -82,8 +77,6 @@ class CaloriesCalculator(Calculator):
 		
 
 class CashCalculator(Calculator):
-	# def __init__(self, limit):
-	# 	super().__init__(limit)
 
 	records = []
 	
@@ -119,7 +112,7 @@ class CashCalculator(Calculator):
 		now = dt.datetime.now()
 		stats_today = 0
 		for i in cash_calculator.records:
-			#print(i.date, 'i',dt.datetime.strptime(i.date, '%d.%m.%Y').date())
+			
 			if now.date() == dt.datetime.strptime(i.date, '%d.%m.%Y').date():
 				stats_today = stats_today + i.amount 
 
@@ -134,7 +127,7 @@ class CashCalculator(Calculator):
 		minusseven = now - seven_days
 		
 		for i in cash_calculator.records:
-			#из строки в i.date в объект datetime чтобы сравнить
+			
 			if minusseven < dt.datetime.strptime(i.date, '%d.%m.%Y'):
 				stats = stats + i.amount 
 		
