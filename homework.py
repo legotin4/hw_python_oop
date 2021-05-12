@@ -100,7 +100,8 @@ class CashCalculator(Calculator):
             print('Денег нет, держись')
         elif today_stats > limit:
             today_stats = round(today_stats - limit, 2)
-            print(f'Денег нет, держись: твой долг - {today_stats} руб/USD/Euro')
+            print(f'Денег нет, держись: твой долг -'
+                   f'{today_stats} руб/USD/Euro')
 
     """Сохраняет новую запись о расходах."""
     def add_record(self, record_obj):
