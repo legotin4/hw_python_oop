@@ -1,53 +1,53 @@
 import datetime as dt
 from datetime import timedelta
 
+
 class Calculator:
 	def __init__(self, limit):
 		"""Дневной лимит трат/калорий, который задал пользователь."""
 		self.limit = limit
 
+
 class Record:
 	nowdate = dt.datetime.now().date()
 	nowdate = dt.datetime.strftime(nowdate, '%d.%m.%Y')
 
-
-	def __init__(self, amount, comment, date = nowdate):
-
+	def __init__(self, amount, comment, date=nowdate):
 		"""Денежная сумма или количество килокалорий."""
 		self.amount = amount
 		
 		"""Дата созданя записи. Передаётся в явном виде в конструктор,
 		либо присваивается значение по умолчанию - текущая дата.
 		"""
-		
 		self.date = date
 
 		"""Комментарий на что потрачено или откуда взялись калории."""
 		self.comment = comment
+
 		
 class CaloriesCalculator(Calculator):
 	records = []
 
 	"""Определяет, сколько ещй калорий можно/нужно получить сегодня."""
 	def get_calories_remained(self):
-		
 		limit = self.limit
 		today_stats = CaloriesCalculator.get_today_stats()
 		
 		if limit > today_stats:
 			newlimit = round(limit - today_stats, 2)
-			print(f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {newlimit} кКал')
+			print(f'Сегодня можно съесть что-нибудь ещё,' 
+				f'но с общей калорийностью не более {newlimit} кКал')
 		elif limit == today_stats:
 			print('Хватит есть!')
 		elif today_stats > limit:
 			today_stats = round(today_stats - limit, 2)
-			print(f'Хватит есть!')
-	"""Сохраняет новую запись о приёме пищи."""
+			print('Хватит есть!')
 	
+	"""Сохраняет новую запись о приёме пищи."""
 	def add_record(self, record_obj):
 		self.records.append(record_obj)
+
 	"""Считает, сколько калорий уже съедено сегодня."""
-	
 	def get_today_stats():
 		now = dt.datetime.now()
 		stats_today = 0
@@ -75,12 +75,11 @@ class CaloriesCalculator(Calculator):
 		return stats
 
 		
-
 class CashCalculator(Calculator):
-
 	records = []
 	
-	"""Определяет, сколько денег можно потратить сегодня в рублях, долларах или евро."""
+	"""Определяет, сколько денег можно потратить 
+	сегодня в рублях, долларах или евро."""
 	def get_today_cash_remained(self, currency):
 		USD_RATE = 75
 		EURO_RATE = 90
@@ -155,7 +154,6 @@ CashCalculator.get_week_stats()
 CashCalculator.get_today_stats()
 
 c = CashCalculator(4000)
-
 cash_calculator.get_today_cash_remained('usd')
 
 calories = CaloriesCalculator(3100)
