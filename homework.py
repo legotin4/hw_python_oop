@@ -15,7 +15,7 @@ class Record:
     def __init__(self, amount, comment, date=nowdate):
         """Денежная сумма или количество килокалорий."""
         self.amount = amount
-        
+
         """Дата созданя записи. Передаётся в явном виде в конструктор,
         либо присваивается значение по умолчанию - текущая дата.
         """
@@ -24,7 +24,7 @@ class Record:
         """Комментарий на что потрачено или откуда взялись калории."""
         self.comment = comment
 
-        
+
 class CaloriesCalculator(Calculator):
     records = []
 
@@ -32,7 +32,7 @@ class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
         limit = self.limit
         today_stats = CaloriesCalculator.get_today_stats()
-        
+
         if limit > today_stats:
             newlimit = round(limit - today_stats, 2)
             print(f'Сегодня можно съесть что-нибудь ещё,' 
@@ -42,7 +42,7 @@ class CaloriesCalculator(Calculator):
         elif today_stats > limit:
             today_stats = round(today_stats - limit, 2)
             print('Хватит есть!')
-    
+
     """Сохраняет новую запись о приёме пищи."""
     def add_record(self, record_obj):
         self.records.append(record_obj)
@@ -65,19 +65,19 @@ class CaloriesCalculator(Calculator):
         seven_days = timedelta(7)
         now = dt.datetime.now()
         minusseven = now - seven_days
-        
+
         for i in cash_calculator.records:
             
             if minusseven < dt.datetime.strptime(i.date, '%d.%m.%Y'):
                 stats = stats + i.amount 
-        
+
         print('Получено за последние 7 дней:', stats)
         return stats
 
-        
+
 class CashCalculator(Calculator):
     records = []
-    
+
     """Определяет, сколько денег можно потратить 
     сегодня в рублях, долларах или евро."""
     def get_today_cash_remained(self, currency):
@@ -134,7 +134,7 @@ class CashCalculator(Calculator):
         print('Потрачено за последние 7 дней:', stats)
         return stats
 
-    
+
 
 cash_calculator = CashCalculator(1000)
 
