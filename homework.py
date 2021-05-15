@@ -36,7 +36,7 @@ class CaloriesCalculator(Calculator):
         if limit > today_stats:
             newlimit = round(limit - today_stats, 2)
             print(f'Сегодня можно съесть что-нибудь ещё,' 
-                f'но с общей калорийностью не более {newlimit} кКал')
+                    f'но с общей калорийностью не более {newlimit} кКал')
         elif limit == today_stats:
             print('Хватит есть!')
         elif today_stats > limit:
@@ -52,10 +52,8 @@ class CaloriesCalculator(Calculator):
         now = dt.datetime.now()
         stats_today = 0
         for i in cash_calculator.records:
-            
             if now.date() == dt.datetime.strptime(i.date, '%d.%m.%Y').date():
-                stats_today = stats_today + i.amount 
-
+                stats_today = stats_today + i.amount
         print('Сегодня съедено:', stats_today)
         return stats_today
 
@@ -69,7 +67,7 @@ class CaloriesCalculator(Calculator):
         for i in cash_calculator.records:
             
             if minusseven < dt.datetime.strptime(i.date, '%d.%m.%Y'):
-                stats = stats + i.amount 
+                stats = stats + i.amount
 
         print('Получено за последние 7 дней:', stats)
         return stats
