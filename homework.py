@@ -36,7 +36,7 @@ class CaloriesCalculator(Calculator):
         if limit > today_stats:
             newlimit = round(limit - today_stats, 2)
             print(f'Сегодня можно съесть что-нибудь ещё,'
-             f'но с общей калорийностью не более {newlimit} кКал')
+                  f'но с общей калорийностью не более {newlimit} кКал')
         elif limit == today_stats:
             print('Хватит есть!')
         elif today_stats > limit:
@@ -98,7 +98,7 @@ class CashCalculator(Calculator):
         elif today_stats > limit:
             today_stats = round(today_stats - limit, 2)
             print(f'Денег нет, держись: твой долг -'
-             f'{today_stats} руб/USD/Euro')
+                  f'{today_stats} руб/USD/Euro')
 
     """Сохраняет новую запись о расходах."""
     def add_record(self, record_obj):
@@ -128,8 +128,9 @@ class CashCalculator(Calculator):
 
         print('Потрачено за последние 7 дней:', stats)
         return stats
-cash_calculator = CashCalculator(1000)
 
+
+cash_calculator = CashCalculator(1000)
 
 r = Record(amount=3000, comment='бар в Танин др', date='08.11.2019')
 cash_calculator.add_record(r)
