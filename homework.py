@@ -11,6 +11,7 @@ class Calculator:
 
 class Record:
     nowdate = dt.datetime.now()
+    
     def __init__(self, amount, comment, date=nowdate):
         """Денежная сумма или количество килокалорий."""
         self.amount = amount
