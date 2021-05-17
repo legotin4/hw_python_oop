@@ -6,7 +6,7 @@ class Calculator:
     def __init__(self, limit):
         """Дневной лимит трат/калорий, который задал пользователь."""
         self.limit = limit
-
+    records = []
 
 class Record:
     nowdate = dt.datetime.now().date()
@@ -26,8 +26,6 @@ class Record:
 
 
 class CaloriesCalculator(Calculator):
-    records = []
-
     """Определяет, сколько ещй калорий можно/нужно получить сегодня."""
     def get_calories_remained(self):
         limit = self.limit
@@ -73,22 +71,19 @@ class CaloriesCalculator(Calculator):
 
 
 class CashCalculator(Calculator):
-    records = []
-
+    USD_RATE = 75
+    EURO_RATE = 90
     """Определяет, сколько денег можно потратить
     сегодня в рублях, долларах или евро."""
     def get_today_cash_remained(self, currency):
-        USD_RATE = 75
-        EURO_RATE = 90
-
         limit = self.limit
         today_stats = CashCalculator.get_today_stats()
         if currency == 'usd':
-            limit = limit / USD_RATE
-            today_stats = today_stats / USD_RATE
+            limit = limit / CashCalculator.USD_RATE
+            today_stats = today_stats / CashCalculator.USD_RATE
         elif currency == 'eur':
-            limit = limit / EURO_RATE
-            today_stats = today_stats / EURO_RATE
+            limit = limit / CashCalculator.EURO_RATE
+            today_stats = today_stats / CashCalculator.EURO_RATE
 
         if limit > today_stats:
             newlimit = round(limit - today_stats, 2)
