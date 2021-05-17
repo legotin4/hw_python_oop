@@ -8,6 +8,7 @@ class Calculator:
         self.limit = limit
     records = []
 
+
 class Record:
     nowdate = dt.datetime.now().date()
     nowdate = dt.datetime.strftime(nowdate, '%d.%m.%Y')
