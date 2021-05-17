@@ -10,9 +10,7 @@ class Calculator:
 
 
 class Record:
-    nowdate = dt.datetime.now().date()
-    nowdate = dt.datetime.strftime(nowdate, '%d.%m.%Y')
-
+    nowdate = dt.datetime.now()
     def __init__(self, amount, comment, date=nowdate):
         """Денежная сумма или количество килокалорий."""
         self.amount = amount
@@ -20,7 +18,10 @@ class Record:
         """Дата созданя записи. Передаётся в явном виде в конструктор,
         либо присваивается значение по умолчанию - текущая дата.
         """
-        self.date = date
+        if type(date) == str:
+            self.date = dt.datetime.strptime(date, '%d.%m.%Y')
+        else:
+            self.date = date
 
         """Комментарий на что потрачено или откуда взялись калории."""
         self.comment = comment
@@ -51,7 +52,7 @@ class CaloriesCalculator(Calculator):
         now = dt.datetime.now()
         stats_today = 0
         for i in cash_calculator.records:
-            if now.date() == dt.datetime.strptime(i.date, '%d.%m.%Y').date():
+            if now.date() == i.date.date():
                 stats_today = stats_today + i.amount
         print('Сегодня съедено:', stats_today)
         return stats_today
@@ -64,7 +65,7 @@ class CaloriesCalculator(Calculator):
         minusseven = now - seven_days
 
         for i in cash_calculator.records:
-            if minusseven < dt.datetime.strptime(i.date, '%d.%m.%Y'):
+            if minusseven < i.date:
                 stats = stats + i.amount
 
         print('Получено за последние 7 дней:', stats)
@@ -105,7 +106,7 @@ class CashCalculator(Calculator):
         now = dt.datetime.now()
         stats_today = 0
         for i in cash_calculator.records:
-            if now.date() == dt.datetime.strptime(i.date, '%d.%m.%Y').date():
+            if now.date() == i.date.date():
                 stats_today = stats_today + i.amount
 
         print('Сегодня потрачено:', stats_today)
@@ -119,7 +120,7 @@ class CashCalculator(Calculator):
         minusseven = now - seven_days
 
         for i in cash_calculator.records:
-            if minusseven < dt.datetime.strptime(i.date, '%d.%m.%Y'):
+            if minusseven < i.date:
                 stats = stats + i.amount
 
         print('Потрачено за последние 7 дней:', stats)
