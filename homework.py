@@ -6,7 +6,11 @@ class Calculator:
     def __init__(self, limit):
         """Дневной лимит трат/калорий, который задал пользователь."""
         self.limit = limit
-    records = []
+        self.records = []
+
+    """Сохраняет новую запись о приёме пищи."""
+    def add_record(self, record_obj):
+        self.records.append(record_obj)
 
 
 class Record:
@@ -32,7 +36,7 @@ class CaloriesCalculator(Calculator):
     """Определяет, сколько ещй калорий можно/нужно получить сегодня."""
     def get_calories_remained(self):
         limit = self.limit
-        today_stats = CaloriesCalculator.get_today_stats()
+        today_stats = self.get_today_stats()
 
         if limit > today_stats:
             newlimit = round(limit - today_stats, 2)
@@ -44,28 +48,25 @@ class CaloriesCalculator(Calculator):
             today_stats = round(today_stats - limit, 2)
             print('Хватит есть!')
 
-    """Сохраняет новую запись о приёме пищи."""
-    def add_record(self, record_obj):
-        self.records.append(record_obj)
-
     """Считает, сколько калорий уже съедено сегодня."""
-    def get_today_stats():
+    def get_today_stats(self):
         now = dt.datetime.now()
         stats_today = 0
-        for i in cash_calculator.records:
+
+        for i in self.records:
             if now.date() == i.date.date():
                 stats_today = stats_today + i.amount
         print('Сегодня съедено:', stats_today)
         return stats_today
 
     """Считает, сколько калорий получено за последние 7 дней."""
-    def get_week_stats():
+    def get_week_stats(self):
         stats = 0
         seven_days = timedelta(7)
         now = dt.datetime.now()
         minusseven = now - seven_days
-
-        for i in cash_calculator.records:
+        
+        for i in self.records:
             if minusseven < i.date:
                 stats = stats + i.amount
 
@@ -76,11 +77,14 @@ class CaloriesCalculator(Calculator):
 class CashCalculator(Calculator):
     USD_RATE = 75
     EURO_RATE = 90
+
+    #def __init__(self, limit, records):
+    #    super().__init__(limit, records)
     """Определяет, сколько денег можно потратить
     сегодня в рублях, долларах или евро."""
     def get_today_cash_remained(self, currency):
         limit = self.limit
-        today_stats = CashCalculator.get_today_stats()
+        today_stats = self.get_today_stats()
         if currency == 'usd':
             limit = limit / CashCalculator.USD_RATE
             today_stats = today_stats / CashCalculator.USD_RATE
@@ -98,15 +102,11 @@ class CashCalculator(Calculator):
             print(f'Денег нет, держись: твой долг -'
                   f'{today_stats} руб/USD/Euro')
 
-    """Сохраняет новую запись о расходах."""
-    def add_record(self, record_obj):
-        self.records.append(record_obj)
-
     """Считает сколько денег потрачено сегодня."""
-    def get_today_stats():
+    def get_today_stats(self):
         now = dt.datetime.now()
         stats_today = 0
-        for i in cash_calculator.records:
+        for i in self.records:
             if now.date() == i.date.date():
                 stats_today = stats_today + i.amount
 
@@ -114,13 +114,13 @@ class CashCalculator(Calculator):
         return stats_today
 
     """Считает, сколько денег потрачено за последние 7 дней."""
-    def get_week_stats():
+    def get_week_stats(self):
         stats = 0
         seven_days = timedelta(7)
         now = dt.datetime.now()
         minusseven = now - seven_days
 
-        for i in cash_calculator.records:
+        for i in self.records:
             if minusseven < i.date:
                 stats = stats + i.amount
 
@@ -130,9 +130,9 @@ class CashCalculator(Calculator):
 
 cash_calculator = CashCalculator(1000)
 
-r = Record(amount=3000, comment='бар в Танин др', date='08.11.2019')
+r = Record(amount=300, comment='бар в Танин др', date='08.11.2019')
 cash_calculator.add_record(r)
-cash_calculator.add_record(Record(amount=30, comment='обед', date='4.05.2021'))
+cash_calculator.add_record(Record(amount=300, comment='обед', date='4.05.2021'))
 cash_calculator.add_record(Record(amount=60, comment='обед', date='8.05.2021'))
 cash_calculator.add_record(Record(amount=300, comment='Паше на пиццу'))
 cash_calculator.add_record(Record(amount=400, comment='Саше на суши'))
@@ -141,17 +141,17 @@ cash_calculator.add_record(Record(amount=400, comment='Николаю на за�
 cash_calculator.add_record(Record(amount=400, comment='Павлухе на мидии'))
 cash_calculator.add_record(Record(amount=400, comment='Игорёхе на ватруши'))
 
-CashCalculator.get_week_stats()
+cash_calculator.get_week_stats()
 
 
-CashCalculator.get_today_stats()
+cash_calculator.get_today_stats()
 
 c = CashCalculator(4000)
 cash_calculator.get_today_cash_remained('usd')
 
 calories = CaloriesCalculator(3100)
 
-calories.add_record(Record(amount=200, comment='Печеньки'))
+calories.add_record(Record(amount=2000, comment='Печеньки'))
 calories.add_record(Record(amount=400, comment='Сырок'))
 calories.add_record(Record(amount=100, comment='Сушки'))
 calories.add_record(Record(amount=400, comment='Сакэ'))
@@ -160,6 +160,6 @@ calories.add_record(Record(amount=200, comment='Трюфили'))
 calories.add_record(Record(amount=1400, comment='Обед'))
 calories.add_record(Record(amount=400, comment='Суши'))
 
-CaloriesCalculator.get_today_stats()
-CaloriesCalculator.get_week_stats()
+calories.get_today_stats()
+calories.get_week_stats()
 calories.get_calories_remained()

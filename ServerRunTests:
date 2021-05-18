@@ -31,22 +31,22 @@ tests/test_homework.py::TestCashCalculator::test_get_today_cash_remained[-1-eur]
 tests/test_homework.py::TestCashCalculator::test_get_today_cash_remained[-1-rub] FAILED [100%]
 
 =================================== FAILURES ===================================
-/app/tests/test_homework.py:45: AssertionError: Неверное значение свойства `date` у класса `Record`, свойство должно быть датой
-/app/tests/test_homework.py:34: AssertionError: В качестве дефолтного аргумента для даты не должно быть посчитанное значение или пустая строка
-/app/tests/test_homework.py:60: AssertionError: Добавьте свойство `records` классу `Calculator`
-/app/tests/test_homework.py:68: AssertionError: Добавьте метод `add_record()` для класса `Calculator`
-/app/tests/test_homework.py:78: AttributeError: 'Calculator' object has no attribute 'add_record'
-/app/tests/test_homework.py:86: AttributeError: 'Calculator' object has no attribute 'add_record'
-/app/tests/test_homework.py:131: AssertionError: Проверьте правильность работы метода `get_calories_remained()` у класса `CaloriesCalculator`
-/app/tests/test_homework.py:158: AssertionError: Добавьте свойство `EURO_RATE` классу `CashCalculator`
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-/app/tests/test_homework.py:185: AttributeError: <class 'homework.CashCalculator'> has no attribute 'EURO_RATE'
-========================= 17 failed, 3 passed in 0.25s =========================
+/app/tests/test_homework.py:54: AssertionError: Неверное значение свойства `date` у класса `Record`, свойство должно быть датой
+/app/tests/test_homework.py:40: AssertionError: В качестве дефолтного аргумента для даты не должно быть посчитанное значение или пустая строка
+/app/tests/test_homework.py:70: AssertionError: Неверное значение свойства `records` у класса `Calculator`
+/app/tests/test_homework.py:77: AssertionError: Добавьте метод `add_record()` для класса `Calculator`
+/app/tests/test_homework.py:87: AttributeError: 'Calculator' object has no attribute 'add_record'
+/app/tests/test_homework.py:95: AttributeError: 'Calculator' object has no attribute 'add_record'
+/app/tests/test_homework.py:140: AssertionError: Проверьте правильность работы метода `get_calories_remained()` у класса `CaloriesCalculator`
+/app/tests/test_homework.py:168: AssertionError: Неверное значение свойства `EURO_RATE` у класса `CashCalculator`
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+/usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
+========================= 17 failed, 3 passed in 0.33s =========================
 ```
