@@ -65,7 +65,7 @@ class CaloriesCalculator(Calculator):
         seven_days = timedelta(7)
         now = dt.datetime.now()
         minusseven = now - seven_days
-        
+
         for i in self.records:
             if minusseven < i.date:
                 stats = stats + i.amount
@@ -77,9 +77,6 @@ class CaloriesCalculator(Calculator):
 class CashCalculator(Calculator):
     USD_RATE = 75
     EURO_RATE = 90
-
-    #def __init__(self, limit, records):
-    #    super().__init__(limit, records)
     """Определяет, сколько денег можно потратить
     сегодня в рублях, долларах или евро."""
     def get_today_cash_remained(self, currency):
@@ -132,7 +129,7 @@ cash_calculator = CashCalculator(1000)
 
 r = Record(amount=300, comment='бар в Танин др', date='08.11.2019')
 cash_calculator.add_record(r)
-cash_calculator.add_record(Record(amount=300, comment='обед', date='4.05.2021'))
+cash_calculator.add_record(Record(amount=30, comment='обед', date='4.05.2021'))
 cash_calculator.add_record(Record(amount=60, comment='обед', date='8.05.2021'))
 cash_calculator.add_record(Record(amount=300, comment='Паше на пиццу'))
 cash_calculator.add_record(Record(amount=400, comment='Саше на суши'))
