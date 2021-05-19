@@ -72,6 +72,7 @@ class CaloriesCalculator(Calculator):
             today_stats = round(today_stats - limit, 2)
             print('Хватит есть!')
 
+
 class CashCalculator(Calculator):
     USD_RATE = 75
     EURO_RATE = 90
@@ -96,6 +97,7 @@ class CashCalculator(Calculator):
             today_stats = round(today_stats - limit, 2)
             print(f'Денег нет, держись: твой долг -'
                   f'{today_stats} руб/USD/Euro')
+
 
 cash_calculator = CashCalculator(1000)
 
