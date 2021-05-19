@@ -12,6 +12,31 @@ class Calculator:
     def add_record(self, record_obj):
         self.records.append(record_obj)
 
+    """Считает сколько денег потрачено сегодня."""
+    def get_today_stats(self):
+        now = dt.datetime.now()
+        stats_today = 0
+        for i in self.records:
+            if now.date() == i.date.date():
+                stats_today = stats_today + i.amount
+
+        print(stats_today)
+        return stats_today
+
+    """Считает, сколько денег потрачено за последние 7 дней."""
+    def get_week_stats(self):
+        stats = 0
+        seven_days = timedelta(7)
+        now = dt.datetime.now()
+        minusseven = now - seven_days
+
+        for i in self.records:
+            if minusseven < i.date:
+                stats = stats + i.amount
+
+        print(stats)
+        return stats
+
 
 class Record:
 
@@ -47,32 +72,6 @@ class CaloriesCalculator(Calculator):
             today_stats = round(today_stats - limit, 2)
             print('Хватит есть!')
 
-    """Считает, сколько калорий уже съедено сегодня."""
-    def get_today_stats(self):
-        now = dt.datetime.now()
-        stats_today = 0
-
-        for i in self.records:
-            if now.date() == i.date.date():
-                stats_today = stats_today + i.amount
-        print('Сегодня съедено:', stats_today)
-        return stats_today
-
-    """Считает, сколько калорий получено за последние 7 дней."""
-    def get_week_stats(self):
-        stats = 0
-        seven_days = timedelta(7)
-        now = dt.datetime.now()
-        minusseven = now - seven_days
-
-        for i in self.records:
-            if minusseven < i.date:
-                stats = stats + i.amount
-
-        print('Получено за последние 7 дней:', stats)
-        return stats
-
-
 class CashCalculator(Calculator):
     USD_RATE = 75
     EURO_RATE = 90
@@ -97,32 +96,6 @@ class CashCalculator(Calculator):
             today_stats = round(today_stats - limit, 2)
             print(f'Денег нет, держись: твой долг -'
                   f'{today_stats} руб/USD/Euro')
-
-    """Считает сколько денег потрачено сегодня."""
-    def get_today_stats(self):
-        now = dt.datetime.now()
-        stats_today = 0
-        for i in self.records:
-            if now.date() == i.date.date():
-                stats_today = stats_today + i.amount
-
-        print('Сегодня потрачено:', stats_today)
-        return stats_today
-
-    """Считает, сколько денег потрачено за последние 7 дней."""
-    def get_week_stats(self):
-        stats = 0
-        seven_days = timedelta(7)
-        now = dt.datetime.now()
-        minusseven = now - seven_days
-
-        for i in self.records:
-            if minusseven < i.date:
-                stats = stats + i.amount
-
-        print('Потрачено за последние 7 дней:', stats)
-        return stats
-
 
 cash_calculator = CashCalculator(1000)
 
