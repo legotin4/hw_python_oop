@@ -49,7 +49,7 @@ class Record:
         """
         if type(date) == str:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y')
-        elif date == False:
+        elif date is False:
             self.date = dt.datetime.now()
 
         """Комментарий на что потрачено или откуда взялись калории."""
