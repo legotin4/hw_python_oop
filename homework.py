@@ -39,12 +39,12 @@ class Calculator:
 
 
 class Record:
-    def __init__(self, amount, comment, date=False):
+    def __init__(self, date=False):
         """Денежная сумма или количество килокалорий."""
-        self.amount = amount
+        #self.amount = amount
 
         """Комментарий на что потрачено или откуда взялись калории."""
-        self.comment = comment
+        #self.comment = comment
 
         """Дата созданя записи. Передаётся в явном виде в конструктор,
         либо присваивается значение по умолчанию - текущая дата.
