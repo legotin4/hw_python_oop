@@ -39,7 +39,7 @@ class Calculator:
 
 
 class Record:
-    def __init__(self, date=False):
+    def __init__(self, amount, comment, date=False):
         """Денежная сумма или количество килокалорий."""
         self.amount = amount
 
