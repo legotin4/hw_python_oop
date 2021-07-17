@@ -34,8 +34,8 @@ tests/test_homework.py::TestCashCalculator::test_get_today_cash_remained[-1-rub]
 /app/tests/test_homework.py:54: AssertionError: Неверное значение свойства `date` у класса `Record`, свойство должно быть датой
 /app/tests/test_homework.py:40: AssertionError: В качестве дефолтного аргумента для даты не должно быть посчитанное значение или пустая строка
 /app/tests/test_homework.py:97: AssertionError: Проверьте правильность работы метода `get_week_stats()` у класса `Calculator`
-/app/tests/test_homework.py:140: AssertionError: Проверьте правильность работы метода `get_calories_remained()` у класса `CaloriesCalculator`
-/app/tests/test_homework.py:168: AssertionError: Неверное значение свойства `EURO_RATE` у класса `CashCalculator`
+/app/tests/test_homework.py:142: AssertionError: Проверьте правильность работы метода `get_calories_remained()` у класса `CaloriesCalculator`
+/app/tests/test_homework.py:170: AssertionError: Неверное значение свойства `EURO_RATE` у класса `CashCalculator`
 /usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
 /usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
 /usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
@@ -45,5 +45,6 @@ tests/test_homework.py::TestCashCalculator::test_get_today_cash_remained[-1-rub]
 /usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
 /usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
 /usr/local/lib/python3.7/re.py:178: TypeError: expected string or bytes-like object
-========================= 14 failed, 6 passed in 0.32s =========================
+========================= 14 failed, 6 passed in 0.29s =========================
 ```
+ы
