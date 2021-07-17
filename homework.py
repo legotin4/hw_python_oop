@@ -36,7 +36,7 @@ class Calculator:
 
         print(stats)
         return stats
-        
+
 
 class Record:
     def __init__(self, amount, comment, date=False):
