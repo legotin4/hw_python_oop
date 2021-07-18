@@ -10,6 +10,7 @@ class Calculator:
 
     """Сохраняет новую запись о приёме пищи."""
     def add_record(self, record_obj):
+        print(record_obj.amount, record_obj.date, record_obj.comment, 'add_record')
         self.records.append(record_obj)
 
     """Считает сколько денег потрачено сегодня."""
@@ -20,7 +21,7 @@ class Calculator:
             if now.date() == i.date.date():
                 stats_today = stats_today + i.amount
 
-        print(stats_today)
+        print(stats_today, 'today_stats')
         return stats_today
 
     """Считает, сколько денег потрачено за последние 7 дней."""
@@ -34,7 +35,7 @@ class Calculator:
             if minusseven < i.date:
                 stats = stats + i.amount
 
-        print(stats)
+        print(stats, 'get_week_stats')
         return stats
 
 
@@ -73,19 +74,23 @@ class CaloriesCalculator(Calculator):
 
 
 class CashCalculator(Calculator):
-    USD_RATE = 75
-    EURO_RATE = 90
+    
     """Определяет, сколько денег можно потратить
     сегодня в рублях, долларах или евро."""
     def get_today_cash_remained(self, currency):
+        USD_RATE = 60
+        EURO_RATE = 70
+        
         limit = self.limit
         today_stats = self.get_today_stats()
+        print('limit', limit)
+        print('today_stats', today_stats)
         if currency == 'usd':
-            limit = limit / CashCalculator.USD_RATE
-            today_stats = today_stats / CashCalculator.USD_RATE
+            limit = limit / USD_RATE
+            today_stats = today_stats / USD_RATE
         elif currency == 'eur':
-            limit = limit / CashCalculator.EURO_RATE
-            today_stats = today_stats / CashCalculator.EURO_RATE
+            limit = limit / EURO_RATE
+            today_stats = today_stats / EURO_RATE
 
         if limit > today_stats:
             newlimit = round(limit - today_stats, 2)
@@ -116,10 +121,9 @@ cash_calculator.get_week_stats()
 
 cash_calculator.get_today_stats()
 
-c = CashCalculator(4000)
 cash_calculator.get_today_cash_remained('usd')
 
-calories = CaloriesCalculator(3100)
+calories = CaloriesCalculator(13100)
 
 calories.add_record(Record(amount=2000, comment='Печеньки'))
 calories.add_record(Record(amount=400, comment='Сырок'))
