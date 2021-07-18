@@ -10,7 +10,6 @@ class Calculator:
 
     """Сохраняет новую запись о приёме пищи."""
     def add_record(self, record_obj):
-        print(record_obj.amount, record_obj.date, record_obj.comment, 'add_record')
         self.records.append(record_obj)
 
     """Считает сколько денег потрачено сегодня."""
@@ -74,13 +73,13 @@ class CaloriesCalculator(Calculator):
 
 
 class CashCalculator(Calculator):
-    
+
     """Определяет, сколько денег можно потратить
     сегодня в рублях, долларах или евро."""
     def get_today_cash_remained(self, currency):
         USD_RATE = 60
         EURO_RATE = 70
-        
+
         limit = self.limit
         today_stats = self.get_today_stats()
         print('limit', limit)
