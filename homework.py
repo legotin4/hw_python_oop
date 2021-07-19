@@ -39,7 +39,7 @@ class Calculator:
 
 
 class Record:
-    def __init__(self, amount, comment, date=False):
+    def __init__(self, amount, comment, date=None):
         """Денежная сумма или количество килокалорий."""
         self.amount = amount
 
@@ -51,7 +51,7 @@ class Record:
         """
         if type(date) == str:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y')
-        elif date is False:
+        else date is None:
             self.date = dt.datetime.now()
 
 
