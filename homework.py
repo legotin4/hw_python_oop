@@ -14,10 +14,10 @@ class Calculator:
 
     """Считает сколько денег потрачено сегодня."""
     def get_today_stats(self):
-        now = dt.datetime.now()
+        now = dt.datetime.now().date()
         stats_today = 0
         for i in self.records:
-            if now.date() == i.date.date():
+            if now == i.date:
                 stats_today = stats_today + i.amount
 
         print(stats_today, 'today_stats')
@@ -27,7 +27,7 @@ class Calculator:
     def get_week_stats(self):
         stats = 0
         seven_days = timedelta(7)
-        now = dt.datetime.now()
+        now = dt.datetime.now().date()
         minusseven = now - seven_days
 
         for i in self.records:
@@ -50,9 +50,9 @@ class Record:
         либо присваивается значение по умолчанию - текущая дата.
         """
         if type(date) == str:
-            self.date = dt.datetime.strptime(date, '%d.%m.%Y')
+            self.date = dt.datetime.strptime(date, '%d.%m.%Y').date()
         elif date is None:
-            self.date = dt.datetime.now()
+            self.date = dt.datetime.now().date()
         else:
             self.date = date
 
