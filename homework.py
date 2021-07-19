@@ -51,7 +51,7 @@ class Record:
         """
         if type(date) == str:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y')
-        else date is None:
+        elif date is None:
             self.date = dt.datetime.now()
 
 
