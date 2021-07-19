@@ -54,7 +54,7 @@ class Record:
         elif date is None:
             self.date = dt.datetime.now()
         else:
-            self.date = dt.datetime.now()
+            self.date = date
 
 
 class CaloriesCalculator(Calculator):
