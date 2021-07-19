@@ -53,6 +53,8 @@ class Record:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y')
         elif date is None:
             self.date = dt.datetime.now()
+        else:
+            self.date = dt.datetime.now()
 
 
 class CaloriesCalculator(Calculator):
