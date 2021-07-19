@@ -103,38 +103,3 @@ class CashCalculator(Calculator):
             print(f'Денег нет, держись: твой долг -'
                   f'{today_stats} руб/USD/Euro')
 
-
-cash_calculator = CashCalculator(1000)
-
-r = Record(amount=300, comment='бар в Танин др', date='08.11.2019')
-cash_calculator.add_record(r)
-cash_calculator.add_record(Record(amount=30, comment='обед', date='4.05.2021'))
-cash_calculator.add_record(Record(amount=60, comment='обед', date='8.05.2021'))
-cash_calculator.add_record(Record(amount=300, comment='Паше на пиццу'))
-cash_calculator.add_record(Record(amount=400, comment='Саше на суши'))
-cash_calculator.add_record(Record(amount=400, comment='Сергею на сушки'))
-cash_calculator.add_record(Record(amount=400, comment='Николаю на завтраки'))
-cash_calculator.add_record(Record(amount=400, comment='Павлухе на мидии'))
-cash_calculator.add_record(Record(amount=400, comment='Игорёхе на ватруши'))
-
-cash_calculator.get_week_stats()
-
-
-cash_calculator.get_today_stats()
-
-cash_calculator.get_today_cash_remained('usd')
-
-calories = CaloriesCalculator(13100)
-
-calories.add_record(Record(amount=2000, comment='Печеньки'))
-calories.add_record(Record(amount=400, comment='Сырок'))
-calories.add_record(Record(amount=100, comment='Сушки'))
-calories.add_record(Record(amount=400, comment='Сакэ'))
-calories.add_record(Record(amount=400, comment='Колбаса варёно-сушённая'))
-calories.add_record(Record(amount=200, comment='Трюфили'))
-calories.add_record(Record(amount=1400, comment='Обед'))
-calories.add_record(Record(amount=400, comment='Суши'))
-
-calories.get_today_stats()
-calories.get_week_stats()
-calories.get_calories_remained()
