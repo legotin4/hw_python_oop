@@ -102,4 +102,3 @@ class CashCalculator(Calculator):
             today_stats = round(today_stats - limit, 2)
             print(f'Денег нет, держись: твой долг -'
                   f'{today_stats} руб/USD/Euro')
-            
