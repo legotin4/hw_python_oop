@@ -1,5 +1,5 @@
 import datetime as dt
-from datetime import timedelta,date
+from datetime import timedelta
 
 
 class Calculator:
@@ -19,7 +19,7 @@ class Calculator:
         for i in self.records:
             if now == i.date:
                 stats_today = stats_today + i.amount
-        
+
         return stats_today
 
     """Считает, сколько денег потрачено за последние 7 дней."""
@@ -32,7 +32,7 @@ class Calculator:
         for i in self.records:
             if minusseven < i.date:
                 stats = stats + i.amount
- 
+
         return stats
 
 
@@ -88,7 +88,7 @@ class CashCalculator(Calculator):
         elif currency == 'eur':
             today_stats = (limit - today_stats) / self.EURO_RATE
             name = 'Euro'
-        elif currency == 'rub': 
+        elif currency == 'rub':
             today_stats = (limit - today_stats) / self.RUB_RATE
             name = 'руб'
 
