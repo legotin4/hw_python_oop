@@ -1,6 +1,6 @@
 import datetime as dt
-from datetime import timedelta
-from datetime import date
+from datetime import timedelta,date
+
 
 class Calculator:
     def __init__(self, limit):
@@ -19,8 +19,7 @@ class Calculator:
         for i in self.records:
             if now == i.date:
                 stats_today = stats_today + i.amount
-
-        print(stats_today, 'today_stats')
+        
         return stats_today
 
     """Считает, сколько денег потрачено за последние 7 дней."""
@@ -29,11 +28,11 @@ class Calculator:
         seven_days = timedelta(7)
         now = dt.datetime.now().date()
         minusseven = now - seven_days
-        
+
         for i in self.records:
             if minusseven < i.date:
                 stats = stats + i.amount
-                
+ 
         return stats
 
 
@@ -65,7 +64,7 @@ class CaloriesCalculator(Calculator):
         if limit > today_stats:
             newlimit = round(limit - today_stats, 2)
             print(f'Сегодня можно съесть что-нибудь ещё,'
-                  f'но с общей калорийностью не более {newlimit} кКал')
+                  f' но с общей калорийностью не более {newlimit} кКал')
         elif limit == today_stats:
             print('Хватит есть!')
         elif today_stats > limit:
@@ -77,12 +76,10 @@ class CashCalculator(Calculator):
     USD_RATE = 60
     EURO_RATE = 70
     RUB_RATE = 1.0
-    
+
     """Определяет, сколько денег можно потратить
     сегодня в рублях, долларах или евро."""
     def get_today_cash_remained(self, currency):
-        
-
         limit = self.limit
         today_stats = self.get_today_stats()
         if currency == 'usd':
